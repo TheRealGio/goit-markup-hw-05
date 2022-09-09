@@ -11,11 +11,62 @@
   --white-10percent: rgba(255, 255, 255, 0.1);
   --button-hover-blue: #188ce8;
   --social-grey: #afb1bb;
+  --dark-blue-80percent: rgba(47, 48, 58, 0.8);
+  --backdrop-color: rgba(0, 0, 0, 0.2);
 }
 
 body {
   font-family: "Roboto", sans-serif;
   margin: 0 auto;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop-color);
+  z-index: 10;
+  transition: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal {
+  display: block;
+  width: 528px;
+  height: 581px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px 0px #00000033, 0px 1px 1px 0px #00000024,
+    0px 1px 3px 0px #0000001f;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  transition: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--backdrop-color);
+}
+
+.is-hidden {
+  display: hidden;
+  opacity: 0;
+  transition: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -50;
 }
 
 h1,
@@ -76,7 +127,19 @@ address {
 }
 
 a.current-link {
+  position: relative;
   color: var(--blue);
+}
+
+a.current-link::after {
+  position: absolute;
+  content: "";
+  width: 48px;
+  border-radius: 2px;
+  background: var(--blue);
+  height: 4px;
+  left: 0px;
+  bottom: -1px;
 }
 
 .nav-list {
@@ -108,7 +171,9 @@ a.current-link {
   color: var(--black);
   font-size: 14px;
   font-weight: 500;
-  transition-duration: 0.5s;
+  transition-duration: 250ms;
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
   padding: 32px 0 31px 0;
 }
@@ -118,7 +183,9 @@ a.current-link {
   color: var(--grey);
   font-size: 14px;
   font-weight: 500;
-  transition-duration: 0.5s;
+  transition-duration: 250ms;
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   padding: 32px 0 31px 0;
@@ -175,7 +242,9 @@ a.current-link {
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
-  transition: 200ms;
+  transition-duration: 250ms;
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .main-section button:hover,
@@ -248,6 +317,26 @@ li.benefits-item:not(:last-child) {
   margin-bottom: 50px;
 }
 
+.what-we-do-image-container {
+  position: relative;
+}
+
+.what-we-do-overlay-text {
+  position: absolute;
+  height: 70px;
+  width: 100%;
+  bottom: 0;
+  background-color: var(--dark-blue-80percent);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.03em;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .images-section {
   display: flex;
   align-items: center;
@@ -309,7 +398,9 @@ li.member-card:not(:last-child) {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition-duration: 200ms;
+  transition-duration: 250ms;
+  transition-property: color, background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 50%;
   width: 44px;
   height: 44px;
@@ -368,7 +459,9 @@ li.social-media-icon:not(:last-child) {
   color: var(--social-grey);
   fill: var(--social-grey);
   cursor: pointer;
-  transition-duration: 500ms;
+  transition-duration: 250ms;
+  transition-property: fill, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .regular-customer:hover {
@@ -408,7 +501,9 @@ li.regular-customer:not(:last-child) {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition-duration: 200ms;
+  transition-duration: 250ms;
+  transition-property: color, background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 50%;
   width: 44px;
   height: 44px;
@@ -436,7 +531,10 @@ li.regular-customer:not(:last-child) {
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.03em;
-  transition-duration: 0.5s;
+  transition-duration: 250ms;
+  transition-duration: 250ms;
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-menu {
@@ -457,7 +555,9 @@ li.regular-customer:not(:last-child) {
   background-color: var(--off-white);
   border-radius: 4px;
   border-style: hidden;
-  transition: 200ms;
+  transition-duration: 250ms;
+  transition-property: color, box-shadow, background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
   font-size: 16px;
   line-height: 26px;
@@ -487,16 +587,28 @@ li > .filter-current {
 
 .project-card {
   cursor: pointer;
-  transition-duration: 500ms;
+  position: relative;
 }
 
 .project-card-link {
   display: block;
+  transition-duration: 250ms;
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .project-card-link:hover,
 .project-card-link:focus {
   box-shadow: 1px 4px 6px 0px #00000029, 0px 4px 4px 0px #0000000f,
     0px 1px 1px 0px #0000001f;
+}
+
+.project-card-link:focus .overlay {
+  height: 294px;
+}
+
+.project-card-link:hover .overlay {
+  height: 294px;
 }
 
 .portfolio-showcase-pictures li {
@@ -524,4 +636,28 @@ li > .filter-current {
   padding: 20px 24px;
   border: 1px solid var(--card-border-white);
   border-top: none;
+}
+
+.overlay {
+  position: absolute;
+  overflow: hidden;
+  height: 0px;
+  z-index: 1;
+  bottom: 0;
+  transition-duration: 250ms;
+  transition-property: height, z-index;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  bottom: 106px;
+}
+
+.info-overlay {
+  width: 100%;
+  height: 294px;
+  padding: 77px 24px;
+  padding-top: 63px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: white;
+  background-color: rgba(33, 150, 243, 0.9);
 }
