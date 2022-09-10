@@ -27,7 +27,10 @@ body {
   background-color: var(--backdrop-color);
   z-index: 10;
   transition: 250ms;
+  transition-property: opacity, visibility;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: visible;
+  opacity: 100%;
 }
 
 .modal {
@@ -62,11 +65,8 @@ body {
 }
 
 .is-hidden {
-  display: hidden;
+  visibility: hidden;
   opacity: 0;
-  transition: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: -50;
 }
 
 h1,
@@ -134,7 +134,7 @@ a.current-link {
 a.current-link::after {
   position: absolute;
   content: "";
-  width: 48px;
+  width: 100%;
   border-radius: 2px;
   background: var(--blue);
   height: 4px;
@@ -544,7 +544,7 @@ li.regular-customer:not(:last-child) {
   margin-bottom: 50px;
 }
 
-.filter-menu-items {
+.filter-menu-items:not(:last-child) {
   margin-right: 8px;
 }
 
